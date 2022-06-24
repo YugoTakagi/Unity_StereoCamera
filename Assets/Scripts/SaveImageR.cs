@@ -4,7 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 
-public class SaveImageL : MonoBehaviour
+public class SaveImageR : MonoBehaviour
 {
     public Camera camera;
 
@@ -16,15 +16,21 @@ public class SaveImageL : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // camera.pixelRect = new Rect(0, 0, 640, 480);
+
+        // camera.fieldOfView = 67.9156f; // horizontal Field of view varies is 90.0.
         Vector2 sensorSize = camera.sensorSize;
-
         camera.focalLength = sensorSize[0] / 2.0f;
-
         float f = camera.focalLength;
+        
+        // float height = 2f * camera.orthographicSize;
+        // float width = height * camera.aspect;
+        float fx = camera.pixelHeight / sensorSize[0];
+        float fy = camera.pixelWidth / sensorSize[1];
         print("height: " + camera.pixelHeight + "[pixcel]");
-        print("width: "  + camera.pixelWidth  + "[pixcel]");
+        print("width: " + camera.pixelWidth + "[pixcel]");
+        print("f: " + f + "[mm] -> fx: " + fx + "[pixel], fy: " + fx + "[pixel]");
         print("sensor size: " + sensorSize + "[mm]");
-        print("f: " + f + "[mm]");
     }
 
     // Update is called once per frame
@@ -32,14 +38,7 @@ public class SaveImageL : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            CaptureImage("testL.png");
-
-            Vector2 sensorSize = camera.sensorSize;
-            float f = camera.focalLength;
-            print("height: " + camera.pixelHeight + "[pixcel]");
-            print("width: "  + camera.pixelWidth  + "[pixcel]");
-            print("sensor size: " + sensorSize + "[mm]");
-            print("f: " + f + "[mm]");
+            CaptureImage("testR.png");
         }
     }
 
