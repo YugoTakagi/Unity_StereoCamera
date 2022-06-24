@@ -12,6 +12,7 @@ public class SaveImageL : MonoBehaviour
     void Start()
     {
         camera.pixelRect = new Rect(0, 0, 640, 480);
+        camera.fieldOfView = 67.9156f; // horizontal Field of view varies is 90.0.
         // float height = 2f * camera.orthographicSize;
         // float width = height * camera.aspect;
         print("height: " + camera.pixelHeight + "[pixcel]");

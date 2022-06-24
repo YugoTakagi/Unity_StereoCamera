@@ -7,9 +7,8 @@ imgL = cv2.imread('imgs/CameraScreenShot_L.png', 0)
 imgR = cv2.imread('imgs/CameraScreenShot_R.png', 0)
 
 # estimate depth
-# stereo = cv2.StereoBM_create(numDisparities=16, blockSize=15)
-# stereo = cv2.StereoBM_create(numDisparities=96, blockSize=15)
-stereo = cv2.StereoBM_create(numDisparities=64, blockSize=15)
+# stereo = cv2.StereoBM_create(numDisparities=64, blockSize=15) # 高速
+stereo = cv2.StereoSGBM_create(numDisparities=64, blockSize=15) # 信頼性が高い．
 disparity_px_16 = stereo.compute(imgL, imgR)
 
 # # raw output
